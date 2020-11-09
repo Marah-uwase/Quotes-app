@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legendary Quotes</title>
+</head>
+
+
+<div class="container-fluid">
+    <div class="jumbotron ">
+        <h1 class="text-center text-uppercase ">The Quotes world</h1>
+        <p class="lead text-center ">Make your favourite quotes by interacting with us and make the most out of this website by having the quotes change you</p>
+    </div>
+    <div class="row ">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <div *ngFor="let mQuote of mQuotes;let i =index">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title text-secondary text-uppercase">{{mQuote.author}}</h4>
+                        <hr>
+                        <p><i class="fas fa-quote-left pr-1"></i>{{mQuote.quote}}<i class="fas fa-quote-right pl-1"></i>
+                        </p>
+                        <span class="row">Submitted By: <h5 class="deep-orange-text pl-3">{{mQuote.user}}
+                            </h5>
+                        </span>
+                        <h5 class="pl-5">{{mQuote.date |dateCount}} days ago</h5>
+
+                        <div class="row ">
+
+                            <button class="btn btn-outline-success"
+                                (click)=' upVote(i)'><span>Like{{mQuote.upvotes}}</span></button>
+                            <button class="btn btn-outline-primary"
+                                (click)=' downVote(i)'><span>Dislike{{mQuote.downvotes}}</span></button>
+                            <button class="btn btn-outline-danger" (click)='deleteQuote($event,i)'>Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <app-quote-form (addQuote)="newQuote($event)"></app-quote-form>
+
+        </div>
+        <div class="col-md-2"></div>
+
+    </div>
+</div>
