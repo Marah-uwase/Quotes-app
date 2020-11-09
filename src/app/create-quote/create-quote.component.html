@@ -1,0 +1,56 @@
+<!-- Button trigger modal -->
+<div classs="container">
+    <div class="row">
+        <div class="col-md-6">
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#basicExampleModal">
+                Create New Quote
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Create Quote</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form (ngSubmit)="submitQuote()" #quoteForm='ngForm'>
+                                <div class="form-group">
+                                    <label for="name">Full name</label>
+                                    <input type="text" class="form-control" id="name" [(ngModel)]="newQuote.user"
+                                        name="name" #name='ngModel' required>
+                                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                                        <p>Name is required</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Author</label>
+                                    <input type="text" class="form-control" id="quote" rows="4"
+                                        [(ngModel)]="newQuote.author" name="author" #author="ngModel" required>
+                                    <div [hidden]="author.valid || author.pristine" class="alert alert-danger">
+                                        <p>Author is required</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="quote">Quote</label>
+                                    <textarea class="form-control" id="quote" [(ngModel)]="newQuote.quote" name="quote"
+                                        #quote="ngModel" required></textarea>
+                                    <div [hidden]="quote.valid || quote.pristine" class="alert alert-danger">
+                                        <p>quote is required</p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary">Clear</button>
+                                    <button type="submit" class="btn btn-primary">Add Quote</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
